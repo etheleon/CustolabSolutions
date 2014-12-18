@@ -1,4 +1,6 @@
-CustolabSolutions
+Custolab Solutions
 =================
 
-Website and demo for a fast science prototype company
+Open Science, Open prototypes.
+
+Feel free to dump and upload your codes
