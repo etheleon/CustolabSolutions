@@ -36,7 +36,6 @@ int DischargeID = 58;
 int IdleID = 59;
 int BootIdleID = 60;
 
-
 // Set pins for actuators.
 int FeedPump = 10;
 int WastePump = 8;
@@ -187,10 +186,11 @@ void IdlePhase(long DurationI){
 
 void TimerDisplay(long DurationT){
   if (timer2 <= DurationT){
-    if (timer0 > 1000){
+    if (timer0 == 1000){
       selectLineThree();
+      Serial.print("Phase: ");
       TimePrinter(DurationT - timer2);
-      //Serial.print(" remaining");
+      Serial.print("\n");
       timer0 = 0;
     }
   }
@@ -198,14 +198,16 @@ void TimerDisplay(long DurationT){
     Phase = ResetID; //function to reset timer
   }
   if (timer3 <= DurationT2 && PhaseLog > 0){
-    if (timer0 > 250 && timer0 < 600){
+    if (timer0 == 500){
       selectLineFour();
+      Serial.print("Tot: ");
       TimePrinter(DurationT2 - timer3);
+      Serial.print("\n");
     }
   }
   if  (timer3 > DurationT2){
     selectLineFour();
-    Serial.print("Cycle Over");
+    Serial.println("Cycle Over");
   }
 }
 
@@ -228,133 +230,145 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Feed1ID;
     selectLineOne();
-    Serial.print("Feeding(1)");
+    Serial.println("Feeding(1)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Feed1 / 3600000);
     Serial.print("h ");
     Serial.print((Feed1 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   if (PhaseLog == 2){
     PhaseLog +=1;
     Phase = Anaerobic1ID;
     selectLineOne();
-    Serial.print("Anaerobic (1)");
+    Serial.println("Anaerobic (1)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Anaerobic1 / 3600000);
     Serial.print("h ");
     Serial.print((Anaerobic1 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 3){
     PhaseLog +=1;
     Phase = Aerobic1ID;
     selectLineOne();
-    Serial.print("Aerobic (1)");
+    Serial.println("Aerobic (1)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Aerobic1 / 3600000);
     Serial.print("h ");
     Serial.print((Aerobic1 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 4){
     PhaseLog +=1;
     Phase = Anoxic1ID;
     selectLineOne();
-    Serial.print("Anoxic (1)");
+    Serial.println("Anoxic (1)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Anoxic1 / 3600000);
     Serial.print("h ");
     Serial.print((Anoxic1 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 5){
     PhaseLog +=1;
     Phase = Feed2ID;
     selectLineOne();
-    Serial.print("Feeding (2)");
+    Serial.println("Feeding (2)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Feed2 / 3600000);
     Serial.print("h ");
     Serial.print((Feed2 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 6){
     PhaseLog +=1;
     Phase = Anaerobic2ID;
     selectLineOne();
-    Serial.print("Anaerobic (2)");
+    Serial.println("Anaerobic (2)");
+    Serial.print("Span:");
     selectLineTwo();
     Serial.print(Anaerobic2 / 3600000);
     Serial.print("h ");
     Serial.print((Anaerobic2 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 7){
     PhaseLog +=1;
     Phase = Aerobic2ID;
     selectLineOne();
-    Serial.print("Aerobic (2)");
+    Serial.println("Aerobic (2)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Aerobic2 / 3600000);
     Serial.print("h ");
     Serial.print((Aerobic2 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 8){
     PhaseLog +=1;
     Phase = Anoxic2ID;
     selectLineOne();
-    Serial.print("Anoxic (2)");
+    Serial.println("Anoxic (2)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Anoxic2 / 3600000);
     Serial.print("h ");
     Serial.print((Anoxic2 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 9){
     PhaseLog +=1;
     Phase = SettleID;
     selectLineOne();
-    Serial.print("Settle");
+    Serial.println("Settle");
     selectLineTwo();
+    Serial.print("Duration: ");
     Serial.print(Settle / 3600000);
     Serial.print("h ");
     Serial.print((Settle % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else if (PhaseLog == 10){
     PhaseLog +=1;
     Phase = DischargeID;
     selectLineOne();
-    Serial.print("Discharge");
+    Serial.println("Discharge");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Discharge / 3600000);
     Serial.print("h ");
     Serial.print((Discharge % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
  }
   else if (PhaseLog == 11){
     PhaseLog +=1;
     Phase = IdleID;
     selectLineOne();
-    Serial.print("Idle");
+    Serial.println("Idle");
     selectLineTwo();
+    Serial.print("Duration: ");
     Serial.print(Idle / 3600000);
     Serial.print("h ");
     Serial.print((Idle % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
   }
   else {
     PhaseLog = 1;
     Phase = Feed1ID;
     selectLineOne();
-    Serial.print("Feeding (1)");
+    Serial.println("Feeding (1)");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Feed1 / 3600000);
     Serial.print("h ");
     Serial.print((Feed1 % 3600000) / 60000);
-    Serial.print("m ");
+    Serial.println("m ");
     timer3 = 0; // reset timer after idle phase.
   }
 }
@@ -512,10 +526,6 @@ void loop() {
     break;
     case 48:
     ResetTimer();
-    break; 
+    break;
   }
-
-   
-}    
-
-
+}
