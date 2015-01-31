@@ -20,6 +20,7 @@ my $Arduino = Device::SerialPort::Arduino->new(
 
 while(1) {
     my $line = $Arduino->receive(1);
+    $line =~ s/[^[:ascii:]]//g;
     say $line;
     sleep(1)
 }
