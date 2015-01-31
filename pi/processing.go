@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/tarm/goserial"
 	"log"
+	"regexp"
 )
 
 func main() {
@@ -13,6 +14,10 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("Hello World!")
+	reg, err := regexp.Compile(`[^[A-Za-z0-9:\n]+`)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	buf := make([]byte, 256)
 	for {
@@ -22,6 +27,7 @@ func main() {
 			log.Fatal(err)
 		}
 		news := string(buf[:n])
-		fmt.Print(news)
+		safe := reg.ReplaceAllString(news, "")
+		fmt.Print(safe)
 	}
 }
