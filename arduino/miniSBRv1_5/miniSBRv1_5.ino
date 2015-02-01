@@ -198,7 +198,7 @@ void TimerDisplay(long DurationT){
     Phase = ResetID; //function to reset timer
   }
   if (timer3 <= DurationT2 && PhaseLog > 0){
-    if (timer0 > 250 && timer0 < 600){
+    if (timer0 < 1){
       selectLineFour();
       TimePrinter(DurationT2 - timer3);
     }
@@ -362,22 +362,30 @@ void ResetTimer(){
 void selectLineOne(){  //puts the cursor at line 0 char 0.
    Serial.write(0xFE);   //command flag
    Serial.write(128);    //position
-   Serial.print("l1 ");
+   Serial.print("l1 Phase: ");
+   Serial.write(0xFE);   //command flag
+   Serial.write(128);    //position
 }
 void selectLineTwo(){  //puts the cursor at line 2 char 0.
    Serial.write(0xFE);   //command flag
    Serial.write(192);    //position
-   Serial.print("l2 ");
+   Serial.print("l2 Duration: ");
+   Serial.write(0xFE);   //command flag
+   Serial.write(192);    //position
 }
 void selectLineThree(){  //puts the cursor at line 3 char 0.
    Serial.write(0xFE);   //command flag
    Serial.write(148);    //position
-   Serial.print("l3 ");
+   Serial.print("l3 PhaseLeft: ");
+   Serial.write(0xFE);   //command flag
+   Serial.write(148);    //position
 }
 void selectLineFour(){  //puts the cursor at line 4 char 0.
    Serial.write(0xFE);   //command flag
    Serial.write(212);    //position
-   Serial.print("l4 ");
+   Serial.print("l4 TotLeft: ");
+   Serial.write(0xFE);   //command flag
+   Serial.write(212);    //position
 }
 void clearLCD(){
    Serial.write(0xFE);   //command flag
