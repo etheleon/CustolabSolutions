@@ -19,6 +19,7 @@ func main() {
 	check(err)
 	regheader, err := regexp.Compile(`^l`)
 	check(err)
+	regAddNewline, err := regexp.Compile(`l`)
 
 	port := flag.String("usbport", "/dev/tty.usbmodem1421", "the usb port use ls /dev/tty*")
 	flag.Parse()
@@ -34,10 +35,9 @@ func main() {
 		check(err)
 		news := string(buf[:n])
 		safe := reg.ReplaceAllString(news, "")
-
+		safe = regAddNewline.ReplaceAllString(safe, "\nl")
 		if regheader.MatchString(safe) {
-			fmt.Print("\n")
-			fmt.Print(safe)
+			fmt.Print("\n", safe)
 		} else {
 			fmt.Print(safe)
 		}
