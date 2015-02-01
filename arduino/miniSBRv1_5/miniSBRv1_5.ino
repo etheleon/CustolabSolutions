@@ -291,8 +291,8 @@ void ResetTimer(){
     Phase = Anaerobic2ID;
     selectLineOne();
     Serial.println("Anae (2)");
-    Serial.print("Span:");
     selectLineTwo();
+    Serial.print("Span:");
     Serial.print(Anaerobic2 / 3600000);
     Serial.print("h ");
     Serial.print((Anaerobic2 % 3600000) / 60000);
