@@ -17,9 +17,8 @@ func check(e error) {
 func main() {
 	reg, err := regexp.Compile(`[^[A-Za-z0-9:\n\s]+`)
 	check(err)
-	regheader, err := regexp.Compile(`^l`)
-	check(err)
 	regAddNewline, err := regexp.Compile(`l`)
+	check(err)
 
 	port := flag.String("usbport", "/dev/tty.usbmodem1421", "the usb port use ls /dev/tty*")
 	flag.Parse()
@@ -36,10 +35,6 @@ func main() {
 		news := string(buf[:n])
 		safe := reg.ReplaceAllString(news, "")
 		safe = regAddNewline.ReplaceAllString(safe, "\nl")
-		if regheader.MatchString(safe) {
-			fmt.Print("\n", safe)
-		} else {
-			fmt.Print(safe)
-		}
+		fmt.Print(safe)
 	}
 }
