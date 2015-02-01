@@ -1,33 +1,45 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/tarm/goserial"
 	"log"
 	"regexp"
 )
 
+func check(e error) {
+	if e != nil {
+		log.Fatal(e)
+	}
+}
+
 func main() {
-	c := &serial.Config{Name: "/dev/tty.usbmodem1421", Baud: 9600}
+	reg, err := regexp.Compile(`[^[A-Za-z0-9:\n\s]+`)
+	check(err)
+	regheader, err := regexp.Compile(`^l`)
+	check(err)
+
+	port := flag.String("usbport", "/dev/tty.usbmodem1421", "the usb port use ls /dev/tty*")
+	flag.Parse()
+
+	c := &serial.Config{Name: *port, Baud: 9600}
 	s, err := serial.OpenPort(c)
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 	fmt.Println("Hello World!")
-	reg, err := regexp.Compile(`[^[A-Za-z0-9:\n]+`)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	buf := make([]byte, 256)
 	for {
-
 		n, err := s.Read(buf)
-		if err != nil {
-			log.Fatal(err)
-		}
+		check(err)
 		news := string(buf[:n])
 		safe := reg.ReplaceAllString(news, "")
-		fmt.Print(safe)
+
+		if regheader.MatchString(safe) {
+			fmt.Print("\n")
+			fmt.Print(safe)
+		} else {
+			fmt.Print(safe)
+		}
 	}
 }
