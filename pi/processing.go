@@ -24,18 +24,29 @@ func printInfo(l1, l2, l3, l4 *string) {
 	}
 }
 
+var port string
+
+func init() {
+	const (
+		defaultPort = "/dev/tty.usbmodem1421"
+		usage       = "the usb port use ls /dev/tty*"
+	)
+	flag.StringVar(&port, "usbport", defaultPort, usage)
+	flag.StringVar(&port, "u", defaultPort, usage+" (shorthand)")
+}
+
 func main() {
+	//Regexes
 	//removes address byte for assigning row
-	reg, err := regexp.Compile(`[^[A-Za-z0-9: ]+`)
+	reg, _ := regexp.Compile(`[^[A-Za-z0-9: ]+`)
 	//captures character l which is appended every new line
-	regNewline, err := regexp.Compile(`l`)
+	regNewline, _ := regexp.Compile(`l`)
+	// want to know what is in front of 'at'
+	lineRE, _ := regexp.Compile(`l(\d)`)
 
-	lineRE, err := regexp.Compile(`l(\d)`) // want to know what is in front of 'at'
-
-	port := flag.String("usbport", "/dev/tty.usbmodem1421", "the usb port use ls /dev/tty*")
 	flag.Parse()
 
-	c := &serial.Config{Name: *port, Baud: 9600}
+	c := &serial.Config{Name: port, Baud: 9600}
 	s, err := serial.OpenPort(c)
 	check(err)
 
@@ -61,7 +72,7 @@ func main() {
 				line, _ := strconv.Atoi(lineNum[1])
 				switch {
 				case line == 1:
-					l1 = tempBuf.String()[2:]
+					l1 = tempBuf.String()[2:] //skips the lX header
 				case line == 2:
 					l2 = tempBuf.String()[2:]
 				case line == 3:

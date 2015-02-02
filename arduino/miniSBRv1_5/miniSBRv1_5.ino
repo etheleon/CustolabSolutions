@@ -205,7 +205,7 @@ void TimerDisplay(long DurationT){
   }
   if  (timer3 > DurationT2){
     selectLineFour();
-    Serial.print("Cycle Over");
+    Serial.print("CYCLE OVER");
   }
 }
 
@@ -228,7 +228,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Feed1ID;
     selectLineOne();
-    Serial.print("Feeding(1)");
+    Serial.print("FEEDING(1)");
     selectLineTwo();
     Serial.print(Feed1 / 3600000);
     Serial.print("h ");
@@ -239,7 +239,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anaerobic1ID;
     selectLineOne();
-    Serial.print("Anaerobic (1)");
+    Serial.print("ANAEROBIC (1)");
     selectLineTwo();
     Serial.print(Anaerobic1 / 3600000);
     Serial.print("h ");
@@ -250,7 +250,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Aerobic1ID;
     selectLineOne();
-    Serial.print("Aerobic (1)");
+    Serial.print("AEROBIC (1)");
     selectLineTwo();
     Serial.print(Aerobic1 / 3600000);
     Serial.print("h ");
@@ -261,7 +261,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anoxic1ID;
     selectLineOne();
-    Serial.print("Anoxic (1)");
+    Serial.print("ANOXIC (1)");
     selectLineTwo();
     Serial.print(Anoxic1 / 3600000);
     Serial.print("h ");
@@ -272,7 +272,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Feed2ID;
     selectLineOne();
-    Serial.print("Feeding (2)");
+    Serial.print("FEEDING (2)");
     selectLineTwo();
     Serial.print(Feed2 / 3600000);
     Serial.print("h ");
@@ -283,7 +283,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anaerobic2ID;
     selectLineOne();
-    Serial.print("Anaerobic (2)");
+    Serial.print("ANAEROBIC (2)");
     selectLineTwo();
     Serial.print(Anaerobic2 / 3600000);
     Serial.print("h ");
@@ -294,7 +294,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Aerobic2ID;
     selectLineOne();
-    Serial.print("Aerobic (2)");
+    Serial.print("AEROBIC (2)");
     selectLineTwo();
     Serial.print(Aerobic2 / 3600000);
     Serial.print("h ");
@@ -305,7 +305,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anoxic2ID;
     selectLineOne();
-    Serial.print("Anoxic (2)");
+    Serial.print("ANOXIC (2)");
     selectLineTwo();
     Serial.print(Anoxic2 / 3600000);
     Serial.print("h ");
@@ -316,7 +316,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = SettleID;
     selectLineOne();
-    Serial.print("Settle");
+    Serial.print("SETTLE");
     selectLineTwo();
     Serial.print(Settle / 3600000);
     Serial.print("h ");
@@ -327,7 +327,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = DischargeID;
     selectLineOne();
-    Serial.print("Discharge");
+    Serial.print("DISCHARGE");
     selectLineTwo();
     Serial.print(Discharge / 3600000);
     Serial.print("h ");
@@ -338,7 +338,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = IdleID;
     selectLineOne();
-    Serial.print("Idle");
+    Serial.print("IDLE");
     selectLineTwo();
     Serial.print(Idle / 3600000);
     Serial.print("h ");
@@ -349,7 +349,7 @@ void ResetTimer(){
     PhaseLog = 1;
     Phase = Feed1ID;
     selectLineOne();
-    Serial.print("Feeding (1)");
+    Serial.print("FEEDING (1)");
     selectLineTwo();
     Serial.print(Feed1 / 3600000);
     Serial.print("h ");
