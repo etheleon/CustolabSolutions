@@ -39,7 +39,7 @@ func init() {
 }
 
 func main() {
-	lcd := lcdScreen{"", "", "", "", 0xFE, 128, 192, 148, 212}
+	lcd := lcdScreen{"Initialising", "\tPhase Duration: 10s\n", "", "", 0xFE, 128, 192, 148, 212}
 
 	flag.Parse()
 
