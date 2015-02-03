@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/tarm/goserial"
 	"log"
+	"path/filepath"
 	"time"
 )
 
@@ -24,25 +25,30 @@ func printInfo(lcd *lcdScreen) {
 	for {
 		fmt.Print(lcd.line1, lcd.line2, lcd.line3, lcd.line4, "\n")
 		time.Sleep(500 * time.Millisecond)
+		//time.Sleep(1 * time.Second)
 	}
 }
 
 var port string
+var defaultPort []string
 
 func init() {
-	const (
-		defaultPort = "/dev/tty.usbmodem1421"
-		usage       = "the usb port use ls /dev/tty*"
-	)
-	flag.StringVar(&port, "usbport", defaultPort, usage)
-	flag.StringVar(&port, "u", defaultPort, usage+" (shorthand)")
+	defaultPortTemp, _ := filepath.Glob("/dev/tty.USB*")
+	if len(defaultPort) == 0 {
+		defaultPortTemp, _ = filepath.Glob("/dev/tty.usb*")
+	}
+	defaultPort = defaultPortTemp
+	flag.StringVar(&port, "usbport", defaultPort[0], "the usb port use ls /dev/tty*")
+	flag.StringVar(&port, "u", defaultPort[0], "the usb port use ls /dev/tty* (shorthand)")
 }
 
 func main() {
-	lcd := lcdScreen{"Initialising", "\tPhase Duration: 10s\n", "", "", 0xFE, 128, 192, 148, 212}
+	lcd := lcdScreen{"Initialising", "\tPhase Duration: 10s", "", "", 0xFE, 128, 192, 148, 212}
 
 	flag.Parse()
-
+	if flag.NFlag() == 0 {
+		fmt.Println("Guessing usb port..... \n\tUsing ", defaultPort[0])
+	}
 	c := &serial.Config{Name: port, Baud: 9600}
 	s, err := serial.OpenPort(c)
 	check(err)
