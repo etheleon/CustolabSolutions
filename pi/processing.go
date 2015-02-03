@@ -23,7 +23,7 @@ func check(e error) {
 func printInfo(lcd *lcdScreen) {
 	for {
 		fmt.Print(lcd.line1, lcd.line2, lcd.line3, lcd.line4, "\n")
-		time.Sleep(1 * time.Second)
+		time.Sleep(500 * time.Millisecond)
 	}
 }
 
