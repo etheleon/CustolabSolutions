@@ -198,14 +198,14 @@ void TimerDisplay(long DurationT){
     Phase = ResetID; //function to reset timer
   }
   if (timer3 <= DurationT2 && PhaseLog > 0){
-    if (timer0 < 1){
+    if (timer0 <1){
       selectLineFour();
       TimePrinter(DurationT2 - timer3);
     }
   }
   if  (timer3 > DurationT2){
     selectLineFour();
-    Serial.print("CYCLE OVER");
+    Serial.print("Cycle Over");
   }
 }
 
@@ -228,7 +228,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Feed1ID;
     selectLineOne();
-    Serial.print("FEEDING(1)");
+    Serial.print("Feeding(1)");
     selectLineTwo();
     Serial.print(Feed1 / 3600000);
     Serial.print("h ");
@@ -239,7 +239,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anaerobic1ID;
     selectLineOne();
-    Serial.print("ANAEROBIC (1)");
+    Serial.print("Anaerobic (1)");
     selectLineTwo();
     Serial.print(Anaerobic1 / 3600000);
     Serial.print("h ");
@@ -250,7 +250,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Aerobic1ID;
     selectLineOne();
-    Serial.print("AEROBIC (1)");
+    Serial.print("Aerobic (1)");
     selectLineTwo();
     Serial.print(Aerobic1 / 3600000);
     Serial.print("h ");
@@ -261,7 +261,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anoxic1ID;
     selectLineOne();
-    Serial.print("ANOXIC (1)");
+    Serial.print("Anoxic (1)");
     selectLineTwo();
     Serial.print(Anoxic1 / 3600000);
     Serial.print("h ");
@@ -272,7 +272,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Feed2ID;
     selectLineOne();
-    Serial.print("FEEDING (2)");
+    Serial.print("Feeding (2)");
     selectLineTwo();
     Serial.print(Feed2 / 3600000);
     Serial.print("h ");
@@ -283,7 +283,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anaerobic2ID;
     selectLineOne();
-    Serial.print("ANAEROBIC (2)");
+    Serial.print("Anaerobic (2)");
     selectLineTwo();
     Serial.print(Anaerobic2 / 3600000);
     Serial.print("h ");
@@ -294,7 +294,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Aerobic2ID;
     selectLineOne();
-    Serial.print("AEROBIC (2)");
+    Serial.print("Aerobic (2)");
     selectLineTwo();
     Serial.print(Aerobic2 / 3600000);
     Serial.print("h ");
@@ -305,7 +305,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = Anoxic2ID;
     selectLineOne();
-    Serial.print("ANOXIC (2)");
+    Serial.print("Anoxic (2)");
     selectLineTwo();
     Serial.print(Anoxic2 / 3600000);
     Serial.print("h ");
@@ -316,7 +316,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = SettleID;
     selectLineOne();
-    Serial.print("SETTLE");
+    Serial.print("Settle");
     selectLineTwo();
     Serial.print(Settle / 3600000);
     Serial.print("h ");
@@ -327,7 +327,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = DischargeID;
     selectLineOne();
-    Serial.print("DISCHARGE");
+    Serial.print("Discharge");
     selectLineTwo();
     Serial.print(Discharge / 3600000);
     Serial.print("h ");
@@ -338,7 +338,7 @@ void ResetTimer(){
     PhaseLog +=1;
     Phase = IdleID;
     selectLineOne();
-    Serial.print("IDLE");
+    Serial.print("Idle");
     selectLineTwo();
     Serial.print(Idle / 3600000);
     Serial.print("h ");
@@ -349,7 +349,7 @@ void ResetTimer(){
     PhaseLog = 1;
     Phase = Feed1ID;
     selectLineOne();
-    Serial.print("FEEDING (1)");
+    Serial.print("Feeding (1)");
     selectLineTwo();
     Serial.print(Feed1 / 3600000);
     Serial.print("h ");
@@ -360,30 +360,18 @@ void ResetTimer(){
 }
 
 void selectLineOne(){  //puts the cursor at line 0 char 0.
-   Serial.,rite(0xFE);   //command flag
-   Serial.write(128);    //position
-   Serial.print("l1 Phase: ");
    Serial.write(0xFE);   //command flag
    Serial.write(128);    //position
 }
 void selectLineTwo(){  //puts the cursor at line 2 char 0.
    Serial.write(0xFE);   //command flag
    Serial.write(192);    //position
-   Serial.print("l2 Duration: ");
-   Serial.write(0xFE);   //command flag
-   Serial.write(192);    //position
 }
 void selectLineThree(){  //puts the cursor at line 3 char 0.
    Serial.write(0xFE);   //command flag
    Serial.write(148);    //position
-   Serial.print("l3 PhaseLeft: ");
-   Serial.write(0xFE);   //command flag
-   Serial.write(148);    //position
 }
 void selectLineFour(){  //puts the cursor at line 4 char 0.
-   Serial.write(0xFE);   //command flag
-   Serial.write(212);    //position
-   Serial.print("l4 TotLeft: ");
    Serial.write(0xFE);   //command flag
    Serial.write(212);    //position
 }

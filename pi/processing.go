@@ -6,20 +6,23 @@ import (
 	"fmt"
 	"github.com/tarm/goserial"
 	"log"
-	"regexp"
-	"strconv"
-	"strings"
 	"time"
 )
+
+type lcdScreen struct {
+	line1, line2, line3, line4                  string
+	address, row1add, row2add, row3add, row4add byte
+}
 
 func check(e error) {
 	if e != nil {
 		log.Fatal(e)
 	}
 }
-func printInfo(l1, l2, l3, l4 *string) {
+
+func printInfo(lcd *lcdScreen) {
 	for {
-		fmt.Print(*l1, *l2, *l3, *l4, "\n")
+		fmt.Print(lcd.line1, lcd.line2, lcd.line3, lcd.line4, "\n")
 		time.Sleep(1 * time.Second)
 	}
 }
@@ -36,13 +39,7 @@ func init() {
 }
 
 func main() {
-	//Regexes
-	//removes address byte for assigning row
-	reg, _ := regexp.Compile(`[^[A-Za-z0-9: ]+`)
-	//captures character l which is appended every new line
-	regNewline, _ := regexp.Compile(`l`)
-	// want to know what is in front of 'at'
-	lineRE, _ := regexp.Compile(`l(\d)`)
+	lcd := lcdScreen{"", "", "", "", 0xFE, 128, 192, 148, 212}
 
 	flag.Parse()
 
@@ -50,42 +47,34 @@ func main() {
 	s, err := serial.OpenPort(c)
 	check(err)
 
-	var l1, l2, l3, l4 string
+	go printInfo(&lcd)
+
 	var tempBuf bytes.Buffer
-
-	go printInfo(&l1, &l2, &l3, &l4)
-
-	buf := make([]byte, 256)
+	buf := make([]byte, 128)
 	for {
 		n, err := s.Read(buf)
 		check(err)
-		news := string(buf[:n])
-		serialString := reg.ReplaceAllString(news, "")
-
-		if regNewline.MatchString(serialString) {
-			splitted := strings.Split(serialString, "l")
-			tempBuf.WriteString(splitted[0])
-			lineNum := lineRE.FindStringSubmatch(tempBuf.String())
-			if len(lineNum) == 2 {
-				//fmt.Println(lineNum[1])
-				//check(err)
-				line, _ := strconv.Atoi(lineNum[1])
+		for i := range buf[:n] {
+			if bytes.Equal([]byte{buf[i]}, []byte{lcd.address}) {
+				row := tempBuf.Next(1)
 				switch {
-				case line == 1:
-					l1 = tempBuf.String()[2:] //skips the lX header
-				case line == 2:
-					l2 = tempBuf.String()[2:]
-				case line == 3:
-					l3 = tempBuf.String()[2:]
-				case line == 4:
-					l4 = tempBuf.String()[2:]
+				case bytes.Equal(row, []byte{lcd.row1add}):
+					lcd.line1 = "\nPhase: "
+					lcd.line1 += tempBuf.String()
+				case bytes.Equal(row, []byte{lcd.row2add}):
+					lcd.line2 = "\n\tPhase Duration: "
+					lcd.line2 += tempBuf.String()
+				case bytes.Equal(row, []byte{lcd.row3add}):
+					lcd.line3 = "\n\tPhase Time left: "
+					lcd.line3 += tempBuf.String()
+				case bytes.Equal(row, []byte{lcd.row4add}):
+					lcd.line4 = "\n\tTotal Time left: "
+					lcd.line4 += tempBuf.String()
 				}
+				tempBuf.Reset()
+			} else {
+				tempBuf.WriteByte(buf[i])
 			}
-			tempBuf.Reset()
-			tempBuf.WriteString("l")
-			tempBuf.WriteString(splitted[1])
-		} else {
-			tempBuf.WriteString(serialString)
 		}
 	}
 }
