@@ -1,0 +1,16 @@
+{
+  "name": "custoLabs",
+  "version": "0.0.1",
+  "homepage": "https://github.com/etheleon/CustolabSolutions",
+  "authors": [
+    "etheleon <picy2k@gmail.com>"
+  ],
+  "description": "WebApp to communicate sensor2server2client",
+  "main": "../pi/app.js",
+  "keywords": [
+    "webapp",
+    "iot"
+  ],
+  "license": "MIT",
+  "private": true
+}
