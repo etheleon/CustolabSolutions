@@ -3,18 +3,13 @@
   "version": "0.0.1",
   "homepage": "https://github.com/etheleon/CustolabSolutions",
   "authors": [
-    "Wesley <picy2k@gmail.com>",
-    "Martin <>"
+    "etheleon <picy2k@gmail.com>"
   ],
-  "dependencies": {
-     "socket.io": "1.3.3"
-  },
-  "description": "Deployable webapp for reactor<->server<->client communication",
+  "description": "WebApp to communicate sensor2server2client",
   "main": "../pi/app.js",
   "keywords": [
     "webapp",
-    "iot",
-    "golang"
+    "iot"
   ],
   "license": "MIT",
   "private": true
