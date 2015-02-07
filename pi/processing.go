@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/tarm/goserial"
 	"log"
-	"path/filepath"
 	"time"
 )
 
@@ -30,16 +29,11 @@ func printInfo(lcd *lcdScreen) {
 }
 
 var port string
-var defaultPort []string
+var defaultPort string = "/dev/tty.usb"
 
 func init() {
-	defaultPortTemp, _ := filepath.Glob("/dev/tty.USB*")
-	if len(defaultPort) == 0 {
-		defaultPortTemp, _ = filepath.Glob("/dev/tty.usb*")
-	}
-	defaultPort = defaultPortTemp
-	flag.StringVar(&port, "usbport", defaultPort[0], "the usb port use ls /dev/tty*")
-	flag.StringVar(&port, "u", defaultPort[0], "the usb port use ls /dev/tty* (shorthand)")
+	flag.StringVar(&port, "usbport", defaultPort, "the usb port use ls /dev/tty*")
+	flag.StringVar(&port, "u", defaultPort, "the usb port use ls /dev/tty* (shorthand)")
 }
 
 func main() {
