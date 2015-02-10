@@ -7,6 +7,7 @@ io.sockets.on('connect',function(socket) {
     console.log('Client has connected to the server!');
     //once connected listen for event
     socket.on('readout',function(data) {
-        console.log(data);
+        io.emit('log', data)
+        console.log(data.phase, data.phaseDuration, data.phaseTimeleft, data.totaltime);
     });
 });
