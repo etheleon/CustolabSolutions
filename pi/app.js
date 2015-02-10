@@ -9,6 +9,8 @@ process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
 process.stdin.on('data', function(data) {
-  process.stdout.write(data);
-  socket.emit('readout', data);
+  //process.stdout.write(data);
+  var result = data.match(/Phase: (.*)?\nPhase Duration: (.*)?\nPhase Time left: (.*)?\nTotal Time left: (.*)?\n/);
+  emitData = {"phase": result[1], "phaseDuration": result[2], "phaseTimeleft": result[3], "totaltime": result[4]};
+  socket.emit('readout', emitData);
 });
