@@ -2,40 +2,39 @@
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="318px" height="434px" viewBox="155.14 -26.555 318 434" enable-background="new 155.14 -26.555 318 434"
-	 xml:space="preserve">
+	 width="318px" height="434px" viewBox="0 0 318 434" enable-background="new 0 0 318 434" xml:space="preserve">
 <g id="Boxes">
-	<rect x="180.333" y="35.033" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="25.335" y="77.088" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
 <g id="Boxes_1_">
-	<rect x="180.333" y="120.133" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="25.335" y="162.188" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
 <g id="Boxes_3_">
-	<rect x="180.333" y="296.445" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="25.335" y="338.5" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
 <g id="Boxes_7_">
-	<rect x="344.333" y="35.033" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="189.334" y="77.088" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
 <g id="Boxes_6_">
-	<rect x="344.333" y="120.133" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="189.334" y="162.188" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
 <g id="Boxes_5_">
-	<rect x="344.333" y="209.445" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="189.334" y="251.5" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
 <g id="Boxes_4_">
-	<rect x="344.333" y="296.445" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="189.334" y="338.5" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
-<text transform="matrix(1 0 0 1 217.1399 69.4448)" font-family="'MyriadPro-Regular'" font-size="12">Feed</text>
-<text transform="matrix(1 0 0 1 204.1399 152.4448)" font-family="'MyriadPro-Regular'" font-size="12">Anaerobic</text>
+<text transform="matrix(1 0 0 1 62.1418 111.5)" font-family="'MyriadPro-Regular'" font-size="12">Feed1</text>
+<text transform="matrix(1 0 0 1 49.1418 194.5)" font-family="'MyriadPro-Regular'" font-size="12">Anaerobic1</text>
 <g id="Boxes_2_">
-	<rect x="180.333" y="209.445" fill="none" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
+	<rect x="25.335" y="251.5" fill="#00FF33" stroke="#000000" stroke-miterlimit="10" width="103.332" height="55"/>
 </g>
-<text transform="matrix(1 0 0 1 210.1399 241.4448)" font-family="'MyriadPro-Regular'" font-size="12">Aerobic</text>
-<text transform="matrix(1 0 0 1 217.1399 330.4448)" font-family="'MyriadPro-Regular'" font-size="12">Anoxic</text>
-<text transform="matrix(1 0 0 1 381.1399 69.4448)" font-family="'MyriadPro-Regular'" font-size="12">Feed</text>
-<text transform="matrix(1 0 0 1 368.1399 152.4448)" font-family="'MyriadPro-Regular'" font-size="12">Anaerobic</text>
-<text transform="matrix(1 0 0 1 374.1399 241.4448)" font-family="'MyriadPro-Regular'" font-size="12">Aerobic</text>
-<text transform="matrix(1 0 0 1 381.1399 330.4448)" font-family="'MyriadPro-Regular'" font-size="12">Anoxic</text>
-<text transform="matrix(1 0 0 1 210.1399 10.4448)" font-family="'MyriadPro-Regular'" font-size="12">Phase1</text>
-<text transform="matrix(1 0 0 1 374.1399 10.4448)" font-family="'MyriadPro-Regular'" font-size="12">Phase2</text>
+<text transform="matrix(1 0 0 1 55.1418 283.5)" font-family="'MyriadPro-Regular'" font-size="12">Aerobic1</text>
+<text transform="matrix(1 0 0 1 62.1418 372.499)" font-family="'MyriadPro-Regular'" font-size="12">Anoxic1</text>
+<text transform="matrix(1 0 0 1 226.1418 111.5)" font-family="'MyriadPro-Regular'" font-size="12">Feed2</text>
+<text transform="matrix(1 0 0 1 213.1418 194.5)" font-family="'MyriadPro-Regular'" font-size="12">Anaerobic2</text>
+<text transform="matrix(1 0 0 1 219.1418 283.5)" font-family="'MyriadPro-Regular'" font-size="12">Aerobic2</text>
+<text transform="matrix(1 0 0 1 226.1418 372.499)" font-family="'MyriadPro-Regular'" font-size="12">Anoxic2</text>
+<text transform="matrix(1 0 0 1 55.1418 52.5)" font-family="'MyriadPro-Regular'" font-size="12">Phase1</text>
+<text transform="matrix(1 0 0 1 219.1418 52.5)" font-family="'MyriadPro-Regular'" font-size="12">Phase2</text>
 </svg>
